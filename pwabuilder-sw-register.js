@@ -13,5 +13,5 @@ if ('serviceWorker' in navigator) {
     });
   }
 } else {
-  console.log("Uh oh, navigator doesn't have serviceWorker");
+  //alert("This browser doesn't support service workers, therefore this application will not function.");
 }

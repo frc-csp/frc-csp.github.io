@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="manifest.json"></link>
+        <link rel="stylesheet" href="index.css" type="text/css"></link>
         <link rel="stylesheet" href="side-menu.css" type="text/css"></link>
     </head>
     <body>
@@ -20,10 +21,32 @@
             <img id="side-menu-icon" src="/menu.png" onclick="openNav()" />
         </div>
 
+        <div id="main-content">
+            <div id="logos-section">
+                <img src="projectb_logo.png" />
+                <img src="di_logo.png" />
+            </div>
+            <div id="scout-status-section">
+                <div id="scout-logged-in-view" style="display: none;">
+                    <p id="welcome-text-logged-in"></p>
+                    <button onclick="scout.logout();">Logout</button>
+                </div>
+                <div id="scout-not-logged-in-view">
+                    <p>Please log in below.</p>
+                    <input id="scout-name" type="text" placeholder="Scout" />
+                    <br />
+                    <input id="scout-tournament" type="text" placeholder="Tournament" />
+                    <br />
+                    <button onclick="scoutLogin();">Login</button>
+                </div>
+            </div>
+        </div>
+
         <script src="pwabuilder-sw-register.js"></script>
         <script src="pwabuilder-sw.js"></script>
         <script src="scoutAuth.js"></script>
         <script src="side-menu.js"></script>
+        <script src="index.js"></script>
         <script src="manup.min.js"></script>
     </body>
 </html>
