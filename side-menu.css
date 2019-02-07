@@ -8,3 +8,7 @@ a, a:visited, a:hover, a:focus, a:active {
     text-decoration: none;
     color: black;
 }
+
+.responsive-text {
+    font-size: 2vw;
+}
