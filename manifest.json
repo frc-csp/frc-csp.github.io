@@ -1,0 +1,16 @@
+{
+    "dir": "ltr",
+    "lang": "English",
+    "name": "Collaborative Scouting Project",
+    "scope": "/",
+    "display": "standalone",
+    "start_url": "127.0.0.1/8887",
+    "short_name": "CSP",
+    "theme_color": "transparent",
+    "description": "The Collaborative Scouting Project Android app for the 2018-2019 FRC Navigating Deep Space season.",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": []
+}
