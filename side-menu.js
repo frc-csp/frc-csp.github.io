@@ -9,8 +9,13 @@ function closeNav() {
 }
 
 // Subscribe to scout auth changes
-document.getElementById("scout-name-a").addEventListener(scout.authStateChangedListenerEventKey, e => {
-    console.log('AUTH STATE CHANGED: ' + e.detail);
-});
+document.getElementById("scout-name-a").addEventListener(scout.authStateChangedListenerEventKey, updateStatusText);
+
+function updateStatusText(e) {
+    let scoutStatusText = scout.isLoggedIn() ? `${scout.name}` : 'Not Signed In';
+    document.getElementById('scout-name-a').innerHTML = scoutStatusText;
+}
+
+updateStatusText();
 
 scout.addDelegate(document.getElementById("scout-name-a"));
