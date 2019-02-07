@@ -4,6 +4,11 @@ var CACHE = 'pwabuilder-precache';
 var precacheFiles = [
   '/',
   '/index.html',
+  '/match-scouting.html',
+  '/pit-scouting.html',
+  '/side-menu.css',
+  '/side-menu-filler.js',
+  '/scoutAuth.js',
   '/manifest.json',
   '/manup.min.js',
   '/pwabuilder-sw.js',
@@ -23,7 +28,7 @@ self.addEventListener('install', function(evt) {
 //allow sw to control of current page
 self.addEventListener('activate', function(event) {
   console.log('[PWA Builder] Claiming clients for current page');
-  return self.clients.claim();
+  return event.waitUntil(self.clients.claim());
 });
 
 self.addEventListener('fetch', function(evt) {
@@ -60,5 +65,5 @@ function update(request) {
 
 function fromServer(request){
   //this is the fallback if it is not in the cache to go to the server and get it
-  return fetch(request).then(function(response){ return response});
+  return fetch(request).then(function(response){ return response });
 }
