@@ -7,6 +7,7 @@ var precacheFiles = [
   '/match-scouting.html',
   '/pit-scouting.html',
   '/side-menu.css',
+  '/menu.png',
   '/side-menu-filler.js',
   '/scoutAuth.js',
   '/manifest.json',

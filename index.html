@@ -9,35 +9,21 @@
         <link rel="stylesheet" href="side-menu.css" type="text/css"></link>
     </head>
     <body>
-        <div id="side-menu">
-            <div id="side-menu-scout-info">
-                <h1 class="responsive-text">Scout Information</h1>
-                <p id="scout-logged-in-p">Currently logged in as: Not Logged In</p>
-            </div>
-            <hr />
-            <a href="/">
-                <div class="side-menu-row" id="welcome-screen-row">
-                    <h1 class="responsive-text">Welcome</h1>
-                </div>
-            </a>
-            <hr />
-            <a href="/match-scouting.html">
-                <div class="side-menu-row" id="match-scouting-screen-row">
-                    <h1 class="responsive-text">Match Scouting</h1>
-                </div>
-            </a>
-            <hr />
-            <a href="/pit-scouting.html">
-                <div class="side-menu-row" id="pit-scouting-screen-row">
-                    <h1 class="responsive-text">Pit Scouting</h1>
-                </div>
-            </a>
+        <div id="side-nav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="/" id="scout-name-a">Not Signed In</a>
+            <a href="/match-scouting.html">Match Scouting</a>
+            <a href="/pit-scouting.html">Pit Scouting</a>
+        </div>
+
+        <div class="navbar">
+            <img id="side-menu-icon" src="/menu.png" onclick="openNav()" />
         </div>
 
         <script src="pwabuilder-sw-register.js"></script>
         <script src="pwabuilder-sw.js"></script>
         <script src="scoutAuth.js"></script>
-        <script src="side-menu-filler.js"></script>
+        <script src="side-menu.js"></script>
         <script src="manup.min.js"></script>
     </body>
 </html>
