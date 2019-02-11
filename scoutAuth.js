@@ -1,10 +1,11 @@
 class Scout {
-    authStateChangedListenerEventKey = "authStateChanged"
-    delegates = []
-    name = null;
-    tournament = null;
-    
     constructor() {
+        // Initialize variables
+        this.authStateChangedListenerEventKey = "authStateChanged";
+        this.delegates = [];
+        this.name = null;
+        this.tournament = null;
+
         this.load();
         this.save();
     }
