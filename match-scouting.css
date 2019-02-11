@@ -1,0 +1,11 @@
+.match-information-grid-container {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    background-color: rgba(50, 50, 50, 0.2);
+}
+
+.match-information-grid-item {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    text-align: center;
+}

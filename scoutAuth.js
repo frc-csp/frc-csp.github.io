@@ -47,9 +47,7 @@ class Scout {
      * @returns {Boolean} whether or not the scout was able to log in
      */
     login(name, tournament) {
-        // TODO - validate name and tournament
-        console.log("scout:login name=" + name + ", tournament=" + tournament);
-        
+        // TODO - validate name and tournament        
         // If either parameter is null or empty, we cannot accept.
         if (name === null || name === "" || 
             tournament === null || tournament === "") {

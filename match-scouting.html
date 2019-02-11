@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="side-menu.css" type="text/css"></link>
+        <link rel="stylesheet" href="match-scouting.css" type="text/css"></link>
     </head>
     <body>
         <div id="side-nav" class="sidenav">
@@ -17,6 +18,48 @@
 
         <div class="navbar">
             <img id="side-menu-icon" src="/menu.png" onclick="openNav()" />
+
+            <div class="match-information-grid-container">
+                <div class="match-information-grid-item">
+                    Match
+                    <br />
+                    <input type="number" placeholder="Match #" />
+                </div>
+                <div class="match-information-grid-item">
+                        Team
+                        <br />
+                        <input type="number" placeholder="Team #" />
+                    </div>
+                <div class="match-information-grid-item">
+                    Alliance
+                    <br />
+                    <select id="alliance-select">
+                        <option name="---">---</option>
+                        <option name="red">Red</option>
+                        <option name="blue">Blue</option>
+                    </select>
+                </div>
+                <div class="match-information-grid-item">
+                    Drive Station
+                    <br />
+                    <select id="drive-station-select">
+                            <option name="---">---</option>
+                            <option name="1">1</option>
+                            <option name="2">2</option>
+                            <option name="3">3</option>
+                    </select>
+                </div>
+                <div class="match-information-grid-item">
+                    Robot Position
+                    <br />
+                    <select id="robot-position-select">
+                            <option name="---">---</option>
+                            <option name="1">1</option>
+                            <option name="2">2</option>
+                            <option name="3">3</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <script src="scoutAuth.js"></script>
