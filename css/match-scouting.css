@@ -9,3 +9,13 @@
     padding: 5px;
     text-align: center;
 }
+
+#error-banner {
+    width: 98%;
+    background-color: red;
+    border-radius: 10px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 12px;
+    display: none;
+}

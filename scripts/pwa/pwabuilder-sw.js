@@ -4,20 +4,21 @@ var CACHE = 'pwabuilder-precache';
 var precacheFiles = [
   '/',
   '/index.html',
-  '/index.js',
-  '/index.css',
+  '/scripts/index.js',
+  '/css/index.css',
   '/match-scouting.html',
+  '/scripts/match-scouting.js',
   '/pit-scouting.html',
-  '/side-menu.css',
-  '/side-menu.js',
-  '/menu.png',
-  '/di_logo.png',
-  '/projectb_logo.png',
-  '/scoutAuth.js',
+  '/css/side-menu.css',
+  '/scripts/side-menu.js',
+  '/images/menu.png',
+  '/images/di_logo.png',
+  '/images/projectb_logo.png',
+  '/scripts/scoutAuth.js',
   '/manifest.json',
-  '/manup.min.js',
-  '/pwabuilder-sw.js',
-  '/pwabuilder-sw-register.js'
+  '/scripts/pwa/manup.min.js',
+  '/scripts/pwa/pwabuilder-sw.js',
+  '/scripts/pwa/pwabuilder-sw-register.js'
 ];
 
 //Install stage sets up the cache-array to configure pre-cache content

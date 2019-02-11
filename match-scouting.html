@@ -23,12 +23,12 @@
                 <div class="match-information-grid-item">
                     Match
                     <br />
-                    <input type="number" placeholder="Match #" />
+                    <input id="matchNumberInput" type="number" placeholder="Match #" />
                 </div>
                 <div class="match-information-grid-item">
                         Team
                         <br />
-                        <input type="number" placeholder="Team #" />
+                        <input id="teamNumberInput" type="number" placeholder="Team #" />
                     </div>
                 <div class="match-information-grid-item">
                     Alliance
@@ -60,9 +60,14 @@
                     </select>
                 </div>
             </div>
+
+            <div id="error-banner">
+                Error: <span id="error-banner-text">Error</span>
+            </div>
         </div>
 
         <script src="/scripts/scoutAuth.js"></script>
         <script src="/scripts/side-menu.js"></script>
+        <script src="/scripts/match-scouting.js"></script>
     </body>
 </html>
