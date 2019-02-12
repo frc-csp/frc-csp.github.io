@@ -19,3 +19,26 @@
     padding: 12px;
     display: none;
 }
+
+#footer {
+    width: 100%;
+    height: 5%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    margin-left: -8px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#footer button {
+    border: none;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.0);
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 30px;
+    outline: none;
+}

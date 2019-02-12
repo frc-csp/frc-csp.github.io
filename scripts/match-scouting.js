@@ -15,6 +15,8 @@ function onMatchBarInputChanged(e) {
     var driveStation = document.getElementById("drive-station-select").value;
     var robotPosition = document.getElementById("robot-position-select").value;
 
+    changeField(alliance);
+
     if (matchNumber === "") {
         setError("Missing Match Number");
     } else if (teamNumber === "") {
@@ -26,8 +28,35 @@ function onMatchBarInputChanged(e) {
     } else if (robotPosition === "---") {
         setError("Missing Robot Position");
     } else {
-        clearError();
+        // Check if signed in
+        if (scout.isLoggedIn()) {
+            clearError();
+        } else {
+            setError("Not Logged In");
+        }
     }
+}
+
+function changeField(alliance) {
+    /*switch (alliance) {
+        case "Red":
+            document.getElementById("red-field").style.display = "block";
+            document.getElementById("blue-field").style.display = "none";
+            break;
+        case "Blue":
+            document.getElementById("blue-field").style.display = "block";
+            document.getElementById("red-field").style.display = "none";
+            break;
+        case "---":
+            document.getElementById("blue-field").style.display = "none";
+            document.getElementById("red-field").style.display = "none";
+            break;
+    }*/
+}
+
+// TODO
+function changeView(name) {
+    
 }
 
 // Attach onMatchBarInputChanged to match bar inputs

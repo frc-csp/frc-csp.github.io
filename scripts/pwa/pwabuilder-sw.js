@@ -14,6 +14,8 @@ var precacheFiles = [
   '/images/menu.png',
   '/images/di_logo.png',
   '/images/projectb_logo.png',
+  '/images/frc_blue_field.png',
+  '/images/frc_red_field.png',
   '/scripts/scoutAuth.js',
   '/manifest.json',
   '/scripts/pwa/manup.min.js',
