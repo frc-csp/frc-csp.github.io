@@ -1,13 +1,19 @@
 .match-information-grid-container {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
-    background-color: rgba(50, 50, 50, 0.2);
+    padding-left: 20px;
 }
 
 .match-information-grid-item {
     border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgba(50, 50, 50, 0.2);
     padding: 5px;
     text-align: center;
+}
+
+.match-information-grid-item input {
+    width: 100%;
+    margin-left: -5px;
 }
 
 #error-banner {
@@ -20,25 +26,27 @@
     display: none;
 }
 
+.container {
+    margin-top: 1%;
+}
+
 #footer {
-    width: 100%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
     height: 5%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.6);
     position: fixed;
+    width: 100%;
     bottom: 0;
-    margin-left: -8px;
+    left: 0;
     padding-top: 1%;
-    padding-bottom: 1%;
+    padding-bottom: 2%;
 }
 
 #footer button {
     border: none;
     color: white;
     background-color: rgba(0, 0, 0, 0.0);
-    margin-left: 5%;
-    margin-right: 5%;
     font-size: 30px;
     outline: none;
 }

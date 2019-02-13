@@ -17,7 +17,7 @@
         </div>
 
         <div class="navbar">
-            <img id="side-menu-icon" src="/images/menu.png" onclick="openNav()" />
+            <img id="side-menu-icon" style="float: left;" src="/images/menu.png" onclick="openNav()" />
 
             <div class="match-information-grid-container">
                 <div class="match-information-grid-item">
@@ -66,10 +66,22 @@
             </div>
         </div>
 
+        <div class="container">
+            <div class="content-container" id="sandstormContainer">
+                Auto
+            </div>
+            <div class="content-container" id="teleopContainer">
+                TeleOp
+            </div>
+            <div class="content-container" id="ratingContainer">
+                Rating
+            </div>
+        </div>
+
         <div id="footer">
-            <button onclick="changeView('sandstorm');">Sandstorm</button>
-            <button onclick="changeView('teleop');">TeleOp</button>
-            <button onclick="changeView('rating');">Rating</button>
+            <button onclick="changeView('Sandstorm');">Auto</button>
+            <button onclick="changeView('TeleOp');">TeleOp</button>
+            <button onclick="changeView('Rating');">Rating</button>
         </div>
 
         <script src="/scripts/scoutAuth.js"></script>

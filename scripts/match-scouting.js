@@ -56,7 +56,27 @@ function changeField(alliance) {
 
 // TODO
 function changeView(name) {
-    
+    var sandstorm = document.getElementById("sandstormContainer");
+    var teleop = document.getElementById("teleopContainer");
+    var rating = document.getElementById("ratingContainer");
+
+    switch (name) {
+        case "Sandstorm":
+            sandstorm.style.display = "block";
+            teleop.style.display = "none";
+            rating.style.display = "none";
+            break;
+        case "TeleOp":
+            sandstorm.style.display = "none";
+            teleop.style.display = "block";
+            rating.style.display = "none";
+            break;
+        case "Rating":
+            sandstorm.style.display = "none";
+            teleop.style.display = "none";
+            rating.style.display = "block";
+            break;
+    }
 }
 
 // Attach onMatchBarInputChanged to match bar inputs
@@ -65,4 +85,15 @@ document.getElementById("teamNumberInput").addEventListener("input", onMatchBarI
 document.getElementById("alliance-select").addEventListener("input", onMatchBarInputChanged);
 document.getElementById("drive-station-select").addEventListener("input", onMatchBarInputChanged);
 document.getElementById("robot-position-select").addEventListener("input", onMatchBarInputChanged);
+
+DEBUGfillMatchBar();
 onMatchBarInputChanged();
+changeView('Sandstorm');
+
+function DEBUGfillMatchBar() {
+    document.getElementById("matchNumberInput").value = "1";
+    document.getElementById("teamNumberInput").value = "6317";
+    document.getElementById("alliance-select").value = "Red";
+    document.getElementById("drive-station-select").value = "1";
+    document.getElementById("robot-position-select").value = "1";
+}
