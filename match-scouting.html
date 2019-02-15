@@ -68,7 +68,22 @@
 
         <div class="container">
             <div class="content-container" id="sandstormContainer">
-                Auto
+                <img class="auto-thumbnail-button" id="sandstorm-levels-button" onclick="switchSandstormView('Levels');"/>
+                <img class="auto-thumbnail-button" id="sandstorm-rocket-button" onclick="switchSandstormView('Rocket');"/>
+                <img class="auto-thumbnail-button" id="sandstorm-cargo-button" onclick="switchSandstormView('Cargo');"/>
+            
+                <div class="closeup-view" id="levels-closeup-view">
+                    <button onclick="switchSandstormView('Thumbnails');">< Back</button>
+                    <p>Levels closeup</p>
+                </div>
+                <div class="closeup-view" id="rocket-closeup-view">
+                    <button onclick="switchSandstormView('Thumbnails');">< Back</button>
+                    <p>Rocket closeup</p>
+                </div>
+                <div class="closeup-view" id="cargo-closeup-view">
+                    <button onclick="switchSandstormView('Thumbnails');">< Back</button>
+                    <p>Cargo closeup</p>
+                </div>
             </div>
             <div class="content-container" id="teleopContainer">
                 TeleOp

@@ -43,6 +43,14 @@
     padding-bottom: 2%;
 }
 
+.auto-thumbnail-button {
+    width: 25%;
+}
+
+.closeup-view {
+    display: none;
+}
+
 #footer button {
     border: none;
     color: white;

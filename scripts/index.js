@@ -2,12 +2,12 @@ document.getElementById("scout-status-section").addEventListener(scout.authState
 
 function updateWelcomeView(e) {
     if (scout.isLoggedIn()) {
-        document.getElementById("scout-logged-in-view").style.display = "block";
+        document.getElementById("scout-logged-in-view").style.display = "inline";
         document.getElementById("scout-not-logged-in-view").style.display = "none";
         document.getElementById("welcome-text-logged-in").innerHTML = `Welcome back, Scout ${scout.name}!`;
     } else {
         document.getElementById("scout-logged-in-view").style.display = "none";
-        document.getElementById("scout-not-logged-in-view").style.display = "block";
+        document.getElementById("scout-not-logged-in-view").style.display = "inline";
     }
 }
 

@@ -1,6 +1,6 @@
 function setError(msg) {
     document.getElementById("error-banner-text").innerHTML = msg;
-    document.getElementById("error-banner").style.display = "block";
+    document.getElementById("error-banner").style.display = "inline";
 }
 
 function clearError() {
@@ -38,20 +38,23 @@ function onMatchBarInputChanged(e) {
 }
 
 function changeField(alliance) {
-    /*switch (alliance) {
+    switch (alliance) {
         case "Red":
-            document.getElementById("red-field").style.display = "block";
-            document.getElementById("blue-field").style.display = "none";
+            document.getElementById("sandstorm-levels-button").src = "/images/red_levels.png";
+            document.getElementById("sandstorm-rocket-button").src = "/images/red_rocket.png";
+            document.getElementById("sandstorm-cargo-button").src = "/images/red_cargo_ship.png";
             break;
         case "Blue":
-            document.getElementById("blue-field").style.display = "block";
-            document.getElementById("red-field").style.display = "none";
+            document.getElementById("sandstorm-levels-button").src = "/images/blue_levels.png";
+            document.getElementById("sandstorm-rocket-button").src = "/images/blue_rocket.png"
+            document.getElementById("sandstorm-cargo-button").src = "/images/blue_cargo_ship.png";
             break;
         case "---":
-            document.getElementById("blue-field").style.display = "none";
-            document.getElementById("red-field").style.display = "none";
+            document.getElementById("sandstorm-levels-button").src = "";
+            document.getElementById("sandstorm-rocket-button").src = "";
+            document.getElementById("sandstorm-cargo-button").src = "";
             break;
-    }*/
+    }
 }
 
 // TODO
@@ -62,19 +65,19 @@ function changeView(name) {
 
     switch (name) {
         case "Sandstorm":
-            sandstorm.style.display = "block";
+            sandstorm.style.display = "inline";
             teleop.style.display = "none";
             rating.style.display = "none";
             break;
         case "TeleOp":
             sandstorm.style.display = "none";
-            teleop.style.display = "block";
+            teleop.style.display = "inline";
             rating.style.display = "none";
             break;
         case "Rating":
             sandstorm.style.display = "none";
             teleop.style.display = "none";
-            rating.style.display = "block";
+            rating.style.display = "inline";
             break;
     }
 }
@@ -90,10 +93,49 @@ DEBUGfillMatchBar();
 onMatchBarInputChanged();
 changeView('Sandstorm');
 
+/**
+ * This function is to fill out the match bar to default values
+ * because it takes too long to fill it in everytime you
+ * load the view.
+ */
 function DEBUGfillMatchBar() {
     document.getElementById("matchNumberInput").value = "1";
     document.getElementById("teamNumberInput").value = "6317";
     document.getElementById("alliance-select").value = "Red";
     document.getElementById("drive-station-select").value = "1";
     document.getElementById("robot-position-select").value = "1";
+}
+
+function switchSandstormView(newView) {
+    if (newView === "Levels") {
+        document.getElementById("sandstorm-levels-button").style.display = "none";
+        document.getElementById("sandstorm-rocket-button").style.display = "none";
+        document.getElementById("sandstorm-cargo-button").style.display = "none";
+        document.getElementById("levels-closeup-view").style.display = "inline";
+        document.getElementById("rocket-closeup-view").style.display = "none";
+        document.getElementById("cargo-closeup-view").style.display = "none";
+    } else if (newView === "Rocket") {
+        document.getElementById("sandstorm-levels-button").style.display = "none";
+        document.getElementById("sandstorm-rocket-button").style.display = "none";
+        document.getElementById("sandstorm-cargo-button").style.display = "none";
+        document.getElementById("levels-closeup-view").style.display = "none";
+        document.getElementById("rocket-closeup-view").style.display = "inline";
+        document.getElementById("cargo-closeup-view").style.display = "none";
+    } else if (newView === "Cargo") {
+        document.getElementById("sandstorm-levels-button").style.display = "none";
+        document.getElementById("sandstorm-rocket-button").style.display = "none";
+        document.getElementById("sandstorm-cargo-button").style.display = "none";
+        document.getElementById("levels-closeup-view").style.display = "none";
+        document.getElementById("cargo-closeup-view").style.display = "inline";
+        document.getElementById("rocket-closeup-view").style.display = "none";
+    } else if (newView === "Thumbnails") {
+        document.getElementById("sandstorm-levels-button").style.display = "inline";
+        document.getElementById("sandstorm-rocket-button").style.display = "inline";
+        document.getElementById("sandstorm-cargo-button").style.display = "inline";
+        document.getElementById("levels-closeup-view").style.display = "none";
+        document.getElementById("rocket-closeup-view").style.display = "none";
+        document.getElementById("cargo-closeup-view").style.display = "none";
+    } else {
+        console.log("ERROR: Couldn't load sandstorm view: " + newView);
+    }
 }
