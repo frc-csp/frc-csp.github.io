@@ -57,7 +57,6 @@ function changeField(alliance) {
     }
 }
 
-// TODO
 function changeView(name) {
     var sandstorm = document.getElementById("sandstormContainer");
     var teleop = document.getElementById("teleopContainer");
@@ -89,7 +88,6 @@ document.getElementById("alliance-select").addEventListener("input", onMatchBarI
 document.getElementById("drive-station-select").addEventListener("input", onMatchBarInputChanged);
 document.getElementById("robot-position-select").addEventListener("input", onMatchBarInputChanged);
 
-DEBUGfillMatchBar();
 onMatchBarInputChanged();
 changeView('Sandstorm');
 
