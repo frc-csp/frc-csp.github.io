@@ -88,6 +88,7 @@ document.getElementById("alliance-select").addEventListener("input", onMatchBarI
 document.getElementById("drive-station-select").addEventListener("input", onMatchBarInputChanged);
 document.getElementById("robot-position-select").addEventListener("input", onMatchBarInputChanged);
 
+DEBUGfillMatchBar();
 onMatchBarInputChanged();
 changeView('Sandstorm');
 

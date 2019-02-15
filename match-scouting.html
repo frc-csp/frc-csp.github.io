@@ -68,10 +68,28 @@
 
         <div class="container">
             <div class="content-container" id="sandstormContainer">
+                <!-- Meta data -->
+                <input type="checkbox">Leaves Levels</input>
+                <br />
+                Start Object
+                <select>
+                    <option>---</option>
+                    <option>Hatch</option>
+                    <option>Cargo</option>
+                </select>
+                <input id="auto-loses-start-object" type="checkbox">Loses Start Object</input>
+                <br />
+                <input id="auto-robot-contact" type="checkbox">Robot Contact</input>
+                <input id="auto-foul" type="checkbox">Foul</input>
+                <input id="auto-crosses-midline" type="checkbox">Crosses Midline</input>
+                <br />
+
+                <!-- Thumbnails -->
                 <img class="auto-thumbnail-button" id="sandstorm-levels-button" onclick="switchSandstormView('Levels');" />
                 <img class="auto-thumbnail-button" id="sandstorm-rocket-button" onclick="switchSandstormView('Rocket');" />
                 <img class="auto-thumbnail-button" id="sandstorm-cargo-button" onclick="switchSandstormView('Cargo');" />
             
+                <!-- Closeup views -->
                 <div class="closeup-view" id="levels-closeup-view">
                     <button onclick="switchSandstormView('Thumbnails');">< Back</button>
                     <p>Levels closeup</p>
@@ -99,6 +117,7 @@
             <button onclick="changeView('Rating');">Rating</button>
         </div>
 
+        <script src="/scripts/database.js"></script>
         <script src="/scripts/scoutAuth.js"></script>
         <script src="/scripts/side-menu.js"></script>
         <script src="/scripts/match-scouting.js"></script>
