@@ -126,8 +126,8 @@ function switchSandstormView(newView) {
         document.getElementById("sandstorm-rocket-button").style.display = "none";
         document.getElementById("sandstorm-cargo-button").style.display = "none";
         document.getElementById("levels-closeup-view").style.display = "none";
-        document.getElementById("cargo-closeup-view").style.display = "inline";
         document.getElementById("rocket-closeup-view").style.display = "none";
+        document.getElementById("cargo-closeup-view").style.display = "inline";
     } else if (newView === "Thumbnails") {
         document.getElementById("sandstorm-levels-button").style.display = "inline";
         document.getElementById("sandstorm-rocket-button").style.display = "inline";
@@ -136,6 +136,6 @@ function switchSandstormView(newView) {
         document.getElementById("rocket-closeup-view").style.display = "none";
         document.getElementById("cargo-closeup-view").style.display = "none";
     } else {
-        console.log("ERROR: Couldn't load sandstorm view: " + newView);
+        console.log("ERROR: Invalid sandstorm view: " + newView);
     }
 }
