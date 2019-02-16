@@ -107,6 +107,7 @@ function DEBUGfillMatchBar() {
 
 function switchSandstormView(newView) {
     if (newView === "Levels") {
+        document.getElementById("auto-meta-data").style.display = "none";
         document.getElementById("sandstorm-levels-button").style.display = "none";
         document.getElementById("sandstorm-rocket-button").style.display = "none";
         document.getElementById("sandstorm-cargo-button").style.display = "none";
@@ -114,13 +115,17 @@ function switchSandstormView(newView) {
         document.getElementById("rocket-closeup-view").style.display = "none";
         document.getElementById("cargo-closeup-view").style.display = "none";
     } else if (newView === "Rocket") {
+        document.getElementById("auto-meta-data").style.display = "none";
         document.getElementById("sandstorm-levels-button").style.display = "none";
         document.getElementById("sandstorm-rocket-button").style.display = "none";
         document.getElementById("sandstorm-cargo-button").style.display = "none";
         document.getElementById("levels-closeup-view").style.display = "none";
         document.getElementById("rocket-closeup-view").style.display = "inline";
         document.getElementById("cargo-closeup-view").style.display = "none";
+        document.getElementById("rocket-closeup-nonmodal").style.display = "block";
+        document.getElementById("attempts-successful-modal").style.display = "none";
     } else if (newView === "Cargo") {
+        document.getElementById("auto-meta-data").style.display = "none";
         document.getElementById("sandstorm-levels-button").style.display = "none";
         document.getElementById("sandstorm-rocket-button").style.display = "none";
         document.getElementById("sandstorm-cargo-button").style.display = "none";
@@ -128,6 +133,7 @@ function switchSandstormView(newView) {
         document.getElementById("rocket-closeup-view").style.display = "none";
         document.getElementById("cargo-closeup-view").style.display = "inline";
     } else if (newView === "Thumbnails") {
+        document.getElementById("auto-meta-data").style.display = "block";
         document.getElementById("sandstorm-levels-button").style.display = "inline";
         document.getElementById("sandstorm-rocket-button").style.display = "inline";
         document.getElementById("sandstorm-cargo-button").style.display = "inline";
@@ -137,4 +143,37 @@ function switchSandstormView(newView) {
     } else {
         console.log("ERROR: Invalid sandstorm view: " + newView);
     }
+}
+
+function pressHatch(selection) {
+    document.getElementById("rocket-closeup-nonmodal").style.display = "none";
+    document.getElementById("attempts-successful-modal").style.display = "block";
+
+    const sideKey = {
+        "0": "Left",
+        "1": "Right"
+    };
+
+    const level = {
+        "0": "Low",
+        "1": "Medium",
+        "2": "High"
+    };
+
+    const name = `Hatch ${sideKey[selection[0]]} ${level[selection[1]]}`;
+    document.getElementById("attempts-successful-modal-name").innerHTML = name;
+}
+
+function pressCargo(selection) {
+    document.getElementById("rocket-closeup-nonmodal").style.display = "none";
+    document.getElementById("attempts-successful-modal").style.display = "block";
+
+    const level = {
+        "0": "Low",
+        "1": "Medium",
+        "2": "High"
+    };
+
+    const name = `Rocket ${level[selection[0]]}`;
+    document.getElementById("attempts-successful-modal-name").innerHTML = name;
 }

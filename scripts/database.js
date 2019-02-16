@@ -9,6 +9,9 @@ function collectAllInformation() {
 function getSandstormRecord() {
     const record = new Record("auto_");
 
+    const leavesLevels = document.getElementById("auto-leaves-levels").checked;
+    record.add("flBaseLine", leavesLevels);
+
     const losesStartObject = document.getElementById("auto-loses-start-object").checked;
     record.add("flLoseStartObject", losesStartObject);
 

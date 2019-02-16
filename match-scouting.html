@@ -69,20 +69,21 @@
         <div class="container">
             <div class="content-container" id="sandstormContainer">
                 <!-- Meta data -->
-                <input type="checkbox">Leaves Levels</input>
-                <br />
-                Start Object
-                <select>
-                    <option>---</option>
-                    <option>Hatch</option>
-                    <option>Cargo</option>
-                </select>
-                <input id="auto-loses-start-object" type="checkbox">Loses Start Object</input>
-                <br />
-                <input id="auto-robot-contact" type="checkbox">Robot Contact</input>
-                <input id="auto-foul" type="checkbox">Foul</input>
-                <input id="auto-crosses-midline" type="checkbox">Crosses Midline</input>
-                <br />
+                <div id="auto-meta-data">
+                    <input id="auto-leaves-levels" type="checkbox">Leaves Levels</input>
+                    <br />
+                    Start Object
+                    <select>
+                        <option>---</option>
+                        <option>Hatch</option>
+                        <option>Cargo</option>
+                    </select>
+                    <input id="auto-loses-start-object" type="checkbox">Loses Start Object</input>
+                    <br />
+                    <input id="auto-robot-contact" type="checkbox">Robot Contact</input>
+                    <input id="auto-foul" type="checkbox">Foul</input>
+                    <input id="auto-crosses-midline" type="checkbox">Crosses Midline</input>
+                </div>
 
                 <!-- Thumbnails -->
                 <img class="auto-thumbnail-button" id="sandstorm-levels-button" onclick="switchSandstormView('Levels');" />
@@ -95,8 +96,51 @@
                     <p>Levels closeup</p>
                 </div>
                 <div class="closeup-view" id="rocket-closeup-view">
-                    <button onclick="switchSandstormView('Thumbnails');">< Back</button>
-                    <p>Rocket closeup</p>
+                    <div id="rocket-closeup-nonmodal">
+                        <button onclick="switchSandstormView('Thumbnails');">< Back</button>
+                        <br />
+                        <img style="width: 400px;" src="/images/rocket_closeup.png">
+                        <table id="left-hatch-table">
+                            <tr>
+                                <td><button class="rocket-button" onclick="pressHatch('02');"></button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="rocket-button" onclick="pressHatch('01');"></button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="rocket-button" onclick="pressHatch('00');"></button></td>
+                            </tr>
+                        </table>
+                        <table id="center-cargo-table">
+                            <tr>
+                                <td><button class="rocket-button" onclick="pressCargo('2');"></button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="rocket-button" onclick="pressCargo('1');"></button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="rocket-button" onclick="pressCargo('0');"></button></td>
+                            </tr>
+                        </table>
+                        <table id="right-hatch-table">
+                            <tr>
+                                <td><button class="rocket-button" onclick="pressHatch('12');"></button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="rocket-button" onclick="pressHatch('11');"></button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="rocket-button" onclick="pressHatch('10');"></button></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="display: none;" id="attempts-successful-modal">
+                        <button onclick="switchSandstormView('Rocket');">< Back</button>
+                        <span id="attempts-successful-modal-name">Name</span>
+
+                        <input type="checkbox">Success</input>
+                    </div>
                 </div>
                 <div class="closeup-view" id="cargo-closeup-view">
                     <button onclick="switchSandstormView('Thumbnails');">< Back</button>
