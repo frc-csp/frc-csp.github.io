@@ -157,6 +157,8 @@ function pressHatch(selection) {
 
     const name = `Hatch ${level[selection]}`;
     document.getElementById("attempts-successful-modal-name").innerHTML = name;
+
+    autoFillModalInfo();
 }
 
 function pressCargo(selection) {
@@ -171,6 +173,8 @@ function pressCargo(selection) {
 
     const name = `Rocket ${level[selection[0]]}`;
     document.getElementById("attempts-successful-modal-name").innerHTML = name;
+
+    autoFillModalInfo();
 }
 
 function stepperDecrement() {
@@ -227,6 +231,42 @@ function notifyChange() {
         } else if (headerText.indexOf("Low") >= 0) {
             sandstormDatabase.set("auto_numRocketLowCargoAttempt", attempts);
             sandstormDatabase.set("auto_numRocketLowCargoSuccess", success);
+        } else {
+            console.log("ERROR: Changing rocket value that is not Low, Medium or High...");
+        }
+    }
+}
+
+function autoFillModalInfo() {
+    // Check where to put it
+    const headerText = document.getElementById("attempts-successful-modal-name").innerHTML;
+    const hatch = headerText.indexOf("Hatch") >= 0;
+
+    if (hatch) {
+        // Hatch
+        if (headerText.indexOf("High") >= 0) {
+            document.getElementById("attempts-successful-modal-stepper-number").innerHTML = sandstormDatabase.get("auto_numRocketHighAttempt") || 0;
+            document.getElementById("attempts-successful-modal-success").checked = sandstormDatabase.get("auto_numRocketHighSuccess") || false;
+        } else if (headerText.indexOf("Medium") >= 0) {
+            document.getElementById("attempts-successful-modal-stepper-number").innerHTML = sandstormDatabase.get("auto_numRocketMidHatchAttempt") || 0;
+            document.getElementById("attempts-successful-modal-success").checked = sandstormDatabase.get("auto_numRocketMidHatchSuccess") || false;
+        } else if (headerText.indexOf("Low") >= 0) {
+            document.getElementById("attempts-successful-modal-stepper-number").innerHTML = sandstormDatabase.get("auto_numRocketLowHatchAttempt") || 0;
+            document.getElementById("attempts-successful-modal-success").checked = sandstormDatabase.get("auto_numRocketLowHatchSuccess") || false;
+        } else {
+            console.log("ERROR: Changing hatch value that is not Low, Medium or High...");
+        }
+    } else {
+        // Rocket
+        if (headerText.indexOf("High") >= 0) {
+            document.getElementById("attempts-successful-modal-stepper-number").innerHTML = sandstormDatabase.get("auto_numRocketHighCargoAttempt") || 0;
+            document.getElementById("attempts-successful-modal-success").checked = sandstormDatabase.get("auto_numRocketHighCargoSuccess") || false;
+        } else if (headerText.indexOf("Medium") >= 0) {
+            document.getElementById("attempts-successful-modal-stepper-number").innerHTML = sandstormDatabase.get("auto_numRocketMidCargoAttempt") || 0;
+            document.getElementById("attempts-successful-modal-success").checked = sandstormDatabase.get("auto_numRocketMidCargoSuccess") || false;
+        } else if (headerText.indexOf("Low") >= 0) {
+            document.getElementById("attempts-successful-modal-stepper-number").innerHTML = sandstormDatabase.get("auto_numRocketLowCargoAttempt") || 0;
+            document.getElementById("attempts-successful-modal-success").checked = sandstormDatabase.get("auto_numRocketLowCargoSuccess") || false;
         } else {
             console.log("ERROR: Changing rocket value that is not Low, Medium or High...");
         }
