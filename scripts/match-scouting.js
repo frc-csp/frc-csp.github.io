@@ -33,7 +33,7 @@ function finishMatch() {
     currentCSVData += document.getElementById("auto-loses-start-object").checked + ",";
     currentCSVData += document.getElementById("auto-robot-contact").checked + ",";
     currentCSVData += document.getElementById("auto-foul").checked + ",";
-    currentCSVData += document.getElementById("auto-crosses-midline") + ",";
+    currentCSVData += document.getElementById("auto-crosses-midline").checked + ",";
     /*
     idEvent
     X numMatch
