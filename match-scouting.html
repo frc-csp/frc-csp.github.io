@@ -102,13 +102,13 @@
                         <img style="width: 400px;" src="/images/rocket_closeup.png">
                         <table id="left-hatch-table">
                             <tr>
-                                <td><button class="rocket-button" onclick="pressHatch('02');"></button></td>
+                                <td><button class="rocket-button" onclick="pressHatch('2');"></button></td>
                             </tr>
                             <tr>
-                                <td><button class="rocket-button" onclick="pressHatch('01');"></button></td>
+                                <td><button class="rocket-button" onclick="pressHatch('1');"></button></td>
                             </tr>
                             <tr>
-                                <td><button class="rocket-button" onclick="pressHatch('00');"></button></td>
+                                <td><button class="rocket-button" onclick="pressHatch('0');"></button></td>
                             </tr>
                         </table>
                         <table id="center-cargo-table">
@@ -124,22 +124,30 @@
                         </table>
                         <table id="right-hatch-table">
                             <tr>
-                                <td><button class="rocket-button" onclick="pressHatch('12');"></button></td>
+                                <td><button class="rocket-button" onclick="pressHatch('2');"></button></td>
                             </tr>
                             <tr>
-                                <td><button class="rocket-button" onclick="pressHatch('11');"></button></td>
+                                <td><button class="rocket-button" onclick="pressHatch('1');"></button></td>
                             </tr>
                             <tr>
-                                <td><button class="rocket-button" onclick="pressHatch('10');"></button></td>
+                                <td><button class="rocket-button" onclick="pressHatch('0');"></button></td>
                             </tr>
                         </table>
                     </div>
 
                     <div style="display: none;" id="attempts-successful-modal">
                         <button onclick="switchSandstormView('Rocket');">< Back</button>
-                        <span id="attempts-successful-modal-name">Name</span>
+                        <br />
+                        <h2 id="attempts-successful-modal-name">Name</h2>
 
-                        <input type="checkbox">Success</input>
+                        <h3 class="stepper-label">Attempts</h3>
+                        <div class="stepper">
+                            <button class="stepper-down-btn" onclick="stepperDecrement();">-</button>
+                            <span id="attempts-successful-modal-stepper-number" class="stepper-number">0</span>
+                            <button class="stepper-up-btn" onclick="stepperIncrement();">+</button>
+                        </div>
+                        <br />
+                        <input id="attempts-successful-modal-success" type="checkbox">Success</input>
                     </div>
                 </div>
                 <div class="closeup-view" id="cargo-closeup-view">

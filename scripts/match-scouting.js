@@ -1,6 +1,6 @@
 function setError(msg) {
     document.getElementById("error-banner-text").innerHTML = msg;
-    document.getElementById("error-banner").style.display = "inline";
+    document.getElementById("error-banner").style.display = "block";
 }
 
 function clearError() {
@@ -149,18 +149,13 @@ function pressHatch(selection) {
     document.getElementById("rocket-closeup-nonmodal").style.display = "none";
     document.getElementById("attempts-successful-modal").style.display = "block";
 
-    const sideKey = {
-        "0": "Left",
-        "1": "Right"
-    };
-
     const level = {
         "0": "Low",
         "1": "Medium",
         "2": "High"
     };
 
-    const name = `Hatch ${sideKey[selection[0]]} ${level[selection[1]]}`;
+    const name = `Hatch ${level[selection]}`;
     document.getElementById("attempts-successful-modal-name").innerHTML = name;
 }
 
@@ -176,4 +171,64 @@ function pressCargo(selection) {
 
     const name = `Rocket ${level[selection[0]]}`;
     document.getElementById("attempts-successful-modal-name").innerHTML = name;
+}
+
+function stepperDecrement() {
+    var number = parseInt(document.getElementById("attempts-successful-modal-stepper-number").innerHTML);
+    number--;
+    if (number < 0) number = 0;
+    document.getElementById("attempts-successful-modal-stepper-number").innerHTML = number;
+    notifyChange();
+}
+
+function stepperIncrement() {
+    var number = parseInt(document.getElementById("attempts-successful-modal-stepper-number").innerHTML);
+    number++;
+    document.getElementById("attempts-successful-modal-stepper-number").innerHTML = number;
+    notifyChange();
+}
+
+// Set event listener for stepper and success
+document.getElementById("attempts-successful-modal-success").addEventListener("change", notifyChange);
+
+/**
+ * Read the new values of stepper and checkbox and store them in the database
+ */
+function notifyChange() {
+    const attempts = parseInt(document.getElementById("attempts-successful-modal-stepper-number").innerHTML);
+    const success = document.getElementById("attempts-successful-modal-success").checked;
+
+    // Check where to put it
+    const headerText = document.getElementById("attempts-successful-modal-name").innerHTML;
+    const hatch = headerText.indexOf("Hatch") >= 0;
+
+    if (hatch) {
+        // Hatch
+        if (headerText.indexOf("High") >= 0) {
+            sandstormDatabase.set("auto_numRocketHighAttempt", attempts);
+            sandstormDatabase.set("auto_numRocketHighSuccess", success);
+        } else if (headerText.indexOf("Medium") >= 0) {
+            sandstormDatabase.set("auto_numRocketMidHatchAttempt", attempts);
+            sandstormDatabase.set("auto_numRocketMidHatchSuccess", success);
+        } else if (headerText.indexOf("Low") >= 0) {
+            sandstormDatabase.set("auto_numRocketLowHatchAttempt", attempts);
+            sandstormDatabase.set("auto_numRocketLowHatchSuccess", success);
+        } else {
+            console.log("ERROR: Changing hatch value that is not Low, Medium or High...");
+        }
+    } else {
+        // Rocket
+        if (headerText.indexOf("High") >= 0) {
+            sandstormDatabase.set("auto_numRocketHighCargoAttempt", attempts);
+            sandstormDatabase.set("auto_numRocketHighCargoSuccess", success);
+        } else if (headerText.indexOf("Medium") >= 0) {
+            sandstormDatabase.set("auto_numRocketMidCargoAttempt", attempts);
+            sandstormDatabase.set("auto_numRocketMidCargoSuccess", success);
+        } else if (headerText.indexOf("Low") >= 0) {
+            sandstormDatabase.set("auto_numRocketLowCargoAttempt", attempts);
+            sandstormDatabase.set("auto_numRocketLowCargoSuccess", success);
+        } else {
+            console.log("ERROR: Changing rocket value that is not Low, Medium or High...");
+        }
+    }
 }
