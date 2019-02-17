@@ -1,3 +1,73 @@
+var currentCSVData;
+
+/**
+ * Export all the data from the database into CSV format, then display QR Code
+ */
+function finishMatch() {
+    // Confirm user wants to finish match
+    const initialText = "Finish Match";
+    const sureText = "Are you sure you want to finish this match?";
+    const showQRCodeText = "Show QR Code";
+
+    if (document.getElementById("finish-match-btn").innerHTML === showQRCodeText) {
+        // Data has already been exported to `currentCSVData`, show qr code now
+        document.getElementById("finish-match-btn").innerHTML = initialText;
+        console.log(currentCSVData);
+       return;
+    } else if (document.getElementById("finish-match-btn").innerHTML !== sureText) {
+        document.getElementById("finish-match-btn").innerHTML = sureText;
+        return;
+    }
+
+    // TODO - Export data to CSV
+    currentCSVData = "";
+
+    currentCSVData += document.getElementById("matchNumberInput").value + ",";
+    currentCSVData += document.getElementById("teamNumberInput").value + ",";
+
+    currentCSVData += scout.name + ",";
+
+    currentCSVData += document.getElementById("auto-active").checked + ",";
+    currentCSVData += document.getElementById("auto-leaves-levels").checked + ",";
+    currentCSVData += sandstormDatabase.export();
+    currentCSVData += document.getElementById("auto-loses-start-object").checked + ",";
+    currentCSVData += document.getElementById("auto-robot-contact").checked + ",";
+    currentCSVData += document.getElementById("auto-foul").checked + ",";
+    currentCSVData += document.getElementById("auto-crosses-midline") + ",";
+    /*
+    idEvent
+    X numMatch
+    X idTeam
+    idAlliance
+    idDriveStation
+    X txScoutName
+    flCrashed
+    flYellow
+    flRed
+    
+    AUTO
+    X auto_flState
+    auto_idStartPosition
+    auto_idStartLevel
+    X auto_flBaseLine
+    auto_idStartObject
+    X AUTO_RECORD
+    X auto_flLoseStartObject
+    X auto_flRobotContact
+    X auto_flFoul
+    X auto_flCrossOver
+    */
+
+    document.getElementById("finish-match-btn").innerHTML = "Exporting to CSV...";
+
+    document.getElementById("finish-match-btn").innerHTML = showQRCodeText;
+
+    // TODO - Reset all UI elements
+
+    // Reset records
+    sandstormDatabase.clear();
+}
+
 function setError(msg) {
     document.getElementById("error-banner-text").innerHTML = msg;
     document.getElementById("error-banner").style.display = "block";
@@ -111,6 +181,7 @@ function switchSandstormView(newView) {
         document.getElementById("sandstorm-levels-button").style.display = "none";
         document.getElementById("sandstorm-rocket-button").style.display = "none";
         document.getElementById("sandstorm-cargo-button").style.display = "none";
+        document.getElementById("finish-match-btn").style.display = "none";
         document.getElementById("levels-closeup-view").style.display = "inline";
         document.getElementById("rocket-closeup-view").style.display = "none";
         document.getElementById("cargo-closeup-view").style.display = "none";
@@ -119,6 +190,7 @@ function switchSandstormView(newView) {
         document.getElementById("sandstorm-levels-button").style.display = "none";
         document.getElementById("sandstorm-rocket-button").style.display = "none";
         document.getElementById("sandstorm-cargo-button").style.display = "none";
+        document.getElementById("finish-match-btn").style.display = "none";
         document.getElementById("levels-closeup-view").style.display = "none";
         document.getElementById("rocket-closeup-view").style.display = "inline";
         document.getElementById("cargo-closeup-view").style.display = "none";
@@ -129,6 +201,7 @@ function switchSandstormView(newView) {
         document.getElementById("sandstorm-levels-button").style.display = "none";
         document.getElementById("sandstorm-rocket-button").style.display = "none";
         document.getElementById("sandstorm-cargo-button").style.display = "none";
+        document.getElementById("finish-match-btn").style.display = "none";
         document.getElementById("levels-closeup-view").style.display = "none";
         document.getElementById("rocket-closeup-view").style.display = "none";
         document.getElementById("cargo-closeup-view").style.display = "inline";
@@ -137,6 +210,7 @@ function switchSandstormView(newView) {
         document.getElementById("sandstorm-levels-button").style.display = "inline";
         document.getElementById("sandstorm-rocket-button").style.display = "inline";
         document.getElementById("sandstorm-cargo-button").style.display = "inline";
+        document.getElementById("finish-match-btn").style.display = "block";
         document.getElementById("levels-closeup-view").style.display = "none";
         document.getElementById("rocket-closeup-view").style.display = "none";
         document.getElementById("cargo-closeup-view").style.display = "none";
@@ -237,10 +311,14 @@ function notifyChange() {
     }
 }
 
+/**
+ * Fill the modal UI elements with data from the database
+ */
 function autoFillModalInfo() {
     // Check where to put it
     const headerText = document.getElementById("attempts-successful-modal-name").innerHTML;
     const hatch = headerText.indexOf("Hatch") >= 0;
+    const rocket = headerText.indexOf("Rocket") >= 0;
 
     if (hatch) {
         // Hatch
@@ -256,7 +334,7 @@ function autoFillModalInfo() {
         } else {
             console.log("ERROR: Changing hatch value that is not Low, Medium or High...");
         }
-    } else {
+    } else if (rocket) {
         // Rocket
         if (headerText.indexOf("High") >= 0) {
             document.getElementById("attempts-successful-modal-stepper-number").innerHTML = sandstormDatabase.get("auto_numRocketHighCargoAttempt") || 0;
@@ -270,5 +348,7 @@ function autoFillModalInfo() {
         } else {
             console.log("ERROR: Changing rocket value that is not Low, Medium or High...");
         }
+    } else {
+        console.log(`Cannot load data for view ${headerText}. Must be Hatch or Rocket.`);
     }
 }
